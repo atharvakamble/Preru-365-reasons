@@ -812,16 +812,24 @@ const musicOptions = document.querySelectorAll(".music-option");
 
 const playlist = [
   {
-    name: "Song 1",
-    file: "./music/song1.mp3"
+    name: "Song 01 ♡",
+    file: "./music/01.mp3"
   },
   {
-    name: "Song 2",
-    file: "./music/song2.mp3"
+    name: "Song 02 ♡",
+    file: "./music/02.mp3"
   },
   {
-    name: "Song 3",
-    file: "./music/song3.mp3"
+    name: "Song 03 ♡",
+    file: "./music/03.mp3"
+  },
+  {
+    name: "Song 04 ♡",
+    file: "./music/04.mp3"
+  },
+  {
+    name: "Song 05 ♡",
+    file: "./music/05.mp3"
   }
 ];
 
