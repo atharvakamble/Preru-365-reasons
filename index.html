@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
 
+  <title>365 Reasons — For My Love 🤍</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="stars"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <main class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <p class="tiny-title">A LITTLE UNIVERSE FOR YOU</p>
+
+      <h1>365</h1>
+
+      <h2>Reasons I Love You</h2>
+
+      <p class="subtitle">
+        One reason for every day.
+        <br />
+        And somehow, even 365 aren't enough. ♾️
+      </p>
+    </header>
+
+
+    <!-- Reason Card -->
+    <section class="reason-section">
+
+      <div class="progress">
+        <span id="reasonNumber">01</span>
+        <span class="progress-line"></span>
+        <span>365</span>
+      </div>
+
+      <div class="reason-card" id="reasonCard">
+
+        <div class="quote-mark">“</div>
+
+        <p class="reason" id="reasonText">
+          You make ordinary moments feel special. 🤍
+        </p>
+
+        <div class="card-bottom">
+          <span>REASON</span>
+          <span id="cardNumber">01</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Controls -->
+    <section class="controls">
+
+      <button
+        class="nav-button"
+        id="previousBtn"
+        aria-label="Previous reason"
+      >
+        <span>←</span>
+        Previous
+      </button>
+
+      <button
+        class="next-button"
+        id="nextBtn"
+        aria-label="Next reason"
+      >
+        Another reason
+        <span>→</span>
+      </button>
+
+    </section>
+
+
+    <!-- Bottom message -->
+    <section class="bottom-message">
+
+      <p id="bottomMessage">
+        Keep going… there are 364 more reasons waiting for you. 🤍
+      </p>
+
+      <div class="heart">
+        ♡
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Final screen -->
+  <div class="final-screen" id="finalScreen">
+
+    <div class="final-content">
+
+      <div class="final-heart">∞</div>
+
+      <p class="final-small">
+        YOU MADE IT TO THE END
+      </p>
+
+      <h2>
+        But there was never<br />
+        really an end.
+      </h2>
+
+      <p class="final-text">
+        Because no matter how many reasons I write,
+        there will always be one more reason to love you.
+      </p>
+
+      <button id="restartBtn">
+        Read them again ↻
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
