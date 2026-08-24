@@ -2,131 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>365 Reasons — For My Love 🤍</title>
+  <title>365 Reasons — For You ♡</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- Background -->
+  <!-- Magical Background -->
+  <div class="sky"></div>
+  <div class="moon"></div>
   <div class="stars"></div>
-  <div class="glow glow-1"></div>
-  <div class="glow glow-2"></div>
 
-  <main class="page">
+  <div class="fireflies"></div>
 
-    <!-- Header -->
-    <header class="header">
-      <p class="tiny-title">A LITTLE UNIVERSE FOR YOU</p>
+  <!-- Animals -->
+  <div class="butterflies">
+    <span>🦋</span>
+    <span>🦋</span>
+    <span>🦋</span>
+    <span>🦋</span>
+  </div>
+
+  <div class="rabbits">
+    <span>🐇</span>
+    <span>🐇</span>
+  </div>
+
+  <div class="deer">
+    <span>🦌</span>
+    <span>🦌</span>
+  </div>
+
+  <div class="grass"></div>
+
+
+  <!-- Main -->
+  <main class="experience">
+
+    <header class="intro">
+
+      <div class="small-label">
+        A LITTLE UNIVERSE FOR YOU
+      </div>
 
       <h1>365</h1>
 
       <h2>Reasons I Love You</h2>
 
-      <p class="subtitle">
-        One reason for every day.
+      <p>
+        I couldn't fit everything into one reason...
         <br />
-        And somehow, even 365 aren't enough. ♾️
+        so I scattered them everywhere. ♡
       </p>
+
     </header>
 
 
-    <!-- Reason Card -->
-    <section class="reason-section">
+    <section class="discovery">
 
-      <div class="progress">
-        <span id="reasonNumber">01</span>
-        <span class="progress-line"></span>
-        <span>365</span>
+      <div class="counter">
+        <span id="batchStart">001</span>
+        <span>—</span>
+        <span id="batchEnd">010</span>
+        <span class="counter-total">/ 365</span>
       </div>
 
-      <div class="reason-card" id="reasonCard">
 
-        <div class="quote-mark">“</div>
+      <div class="reason-field" id="reasonField"></div>
 
-        <p class="reason" id="reasonText">
-          You make ordinary moments feel special. 🤍
-        </p>
 
-        <div class="card-bottom">
-          <span>REASON</span>
-          <span id="cardNumber">01</span>
-        </div>
-
+      <div class="instruction" id="instruction">
+        Tap a reason to discover it ♡
       </div>
 
-    </section>
 
-
-    <!-- Controls -->
-    <section class="controls">
-
-      <button
-        class="nav-button"
-        id="previousBtn"
-        aria-label="Previous reason"
-      >
-        <span>←</span>
-        Previous
-      </button>
-
-      <button
-        class="next-button"
-        id="nextBtn"
-        aria-label="Next reason"
-      >
-        Another reason
+      <button id="nextBatch" class="discover-button">
+        Discover 10 more
         <span>→</span>
       </button>
 
     </section>
 
 
-    <!-- Bottom message -->
-    <section class="bottom-message">
-
-      <p id="bottomMessage">
-        Keep going… there are 364 more reasons waiting for you. 🤍
-      </p>
-
-      <div class="heart">
-        ♡
-      </div>
-
-    </section>
+    <footer>
+      <span>made with love</span>
+      <span>∞</span>
+      <span>for you</span>
+    </footer>
 
   </main>
 
 
-  <!-- Final screen -->
+  <!-- Reason popup -->
+  <div class="reason-overlay" id="reasonOverlay">
+
+    <div class="reason-popup">
+
+      <button class="close-popup" id="closePopup">
+        ×
+      </button>
+
+      <div class="popup-number" id="popupNumber">
+        REASON 001
+      </div>
+
+      <div class="popup-heart">
+        ♡
+      </div>
+
+      <p id="popupText"></p>
+
+      <div class="popup-sparkles">
+        ✦　✧　✦
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Final surprise -->
   <div class="final-screen" id="finalScreen">
+
+    <div class="final-stars"></div>
 
     <div class="final-content">
 
-      <div class="final-heart">∞</div>
+      <div class="infinity">∞</div>
 
-      <p class="final-small">
-        YOU MADE IT TO THE END
-      </p>
+      <div class="final-label">
+        THE LAST REASON
+      </div>
 
       <h2>
-        But there was never<br />
-        really an end.
+        You reached<br />
+        the end.
       </h2>
 
-      <p class="final-text">
-        Because no matter how many reasons I write,
-        there will always be one more reason to love you.
+      <p>
+        Or maybe...
+        <br />
+        there was never really an end.
       </p>
 
-      <button id="restartBtn">
-        Read them again ↻
+      <button id="restartButton">
+        Start again ♡
       </button>
 
     </div>
