@@ -803,12 +803,21 @@ showBatch();
    WEBSITE 3 — MUSIC SYSTEM
    ========================================================= */
 
+/* =========================================================
+   WEBSITE 3 — MUSIC SYSTEM
+   ========================================================= */
+
 const music = document.getElementById("backgroundMusic");
 const musicToggle = document.getElementById("musicToggle");
 const musicTrackButton = document.getElementById("musicTrackButton");
 const musicTrackName = document.getElementById("musicTrackName");
 const musicMenu = document.getElementById("musicMenu");
 const musicOptions = document.querySelectorAll(".music-option");
+
+
+/* =========================================================
+   PLAYLIST
+   ========================================================= */
 
 const playlist = [
   {
@@ -833,13 +842,20 @@ const playlist = [
   }
 ];
 
+
 let currentSong = 0;
-let musicStarted = false;
 
 
-/* ---------------------------------------------------------
+/* =========================================================
+   MUSIC VOLUME
+   ========================================================= */
+
+music.volume = 0.35;
+
+
+/* =========================================================
    LOAD SONG
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function loadSong(index, autoplay = false) {
 
@@ -848,67 +864,48 @@ function loadSong(index, autoplay = false) {
   currentSong = index;
 
   music.src = playlist[index].file;
-  music.loop = false;
-  music.volume = 0.35;
 
-  musicTrackName.textContent = playlist[index].name;
+  musicTrackName.textContent =
+    playlist[index].name;
+
 
   musicOptions.forEach((button, i) => {
-    button.classList.toggle("active", i === index);
+
+    button.classList.toggle(
+      "active",
+      i === index
+    );
+
   });
 
+
   if (autoplay) {
+
     music.play()
       .then(() => {
-        musicStarted = true;
+
         updateMusicButton();
+
       })
-      .catch(() => {
-        console.log("Music waiting for user interaction.");
+      .catch((error) => {
+
+        console.log(
+          "Music requires user interaction.",
+          error
+        );
+
       });
+
   }
+
 }
 
 
-/* ---------------------------------------------------------
-   PLAY / PAUSE
-   --------------------------------------------------------- */
-
-async function toggleMusic() {
-
-  if (music.paused) {
-
-    try {
-
-      await music.play();
-
-      musicStarted = true;
-
-      updateMusicButton();
-
-    } catch (error) {
-
-      console.log("Music could not start:", error);
-
-    }
-
-  } else {
-
-    music.pause();
-
-    updateMusicButton();
-
-  }
-}
-
-
-/* ---------------------------------------------------------
-   BUTTON ICON
-   --------------------------------------------------------- */
+/* =========================================================
+   UPDATE MUSIC BUTTON
+   ========================================================= */
 
 function updateMusicButton() {
-
-  if (!musicToggle) return;
 
   if (music.paused) {
 
@@ -937,106 +934,177 @@ function updateMusicButton() {
 }
 
 
-/* ---------------------------------------------------------
+/* =========================================================
+   PLAY / PAUSE
+   ========================================================= */
+
+async function toggleMusic() {
+
+  if (music.paused) {
+
+    try {
+
+      await music.play();
+
+      updateMusicButton();
+
+    } catch (error) {
+
+      console.log(
+        "Music could not start.",
+        error
+      );
+
+    }
+
+  } else {
+
+    music.pause();
+
+    updateMusicButton();
+
+  }
+
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+   ========================================================= */
+
+musicToggle.addEventListener(
+  "click",
+  toggleMusic
+);
+
+
+/* =========================================================
    CHANGE SONG
-   --------------------------------------------------------- */
+   ========================================================= */
 
 function changeSong(index) {
 
   if (!playlist[index]) return;
 
-  const wasPlaying = !music.paused;
+  const wasPlaying =
+    !music.paused;
 
-  loadSong(index, wasPlaying);
+  loadSong(
+    index,
+    wasPlaying
+  );
 
-  musicMenu.classList.remove("open");
+  musicMenu.classList.remove(
+    "open"
+  );
 
 }
 
 
-/* ---------------------------------------------------------
-   NEXT SONG AUTOMATICALLY
-   --------------------------------------------------------- */
+/* =========================================================
+   AUTOMATICALLY PLAY NEXT SONG
+   ========================================================= */
 
-music.addEventListener("ended", () => {
+music.addEventListener(
+  "ended",
+  () => {
 
-  let nextSong = currentSong + 1;
+    let nextSong =
+      currentSong + 1;
 
-  if (nextSong >= playlist.length) {
-    nextSong = 0;
-  }
+    /*
+      After Song 05,
+      return to Song 01.
+    */
 
-  loadSong(nextSong, true);
+    if (
+      nextSong >= playlist.length
+    ) {
 
-});
+      nextSong = 0;
 
+    }
 
-/* ---------------------------------------------------------
-   PLAY / PAUSE BUTTON
-   --------------------------------------------------------- */
-
-musicToggle.addEventListener("click", () => {
-
-  toggleMusic();
-
-});
-
-
-/* ---------------------------------------------------------
-   OPEN / CLOSE MUSIC MENU
-   --------------------------------------------------------- */
-
-musicTrackButton.addEventListener("click", (event) => {
-
-  event.stopPropagation();
-
-  musicMenu.classList.toggle("open");
-
-});
-
-
-/* ---------------------------------------------------------
-   SONG BUTTONS
-   --------------------------------------------------------- */
-
-musicOptions.forEach((button) => {
-
-  button.addEventListener("click", (event) => {
-
-    const index = Number(
-      event.currentTarget.dataset.song
+    loadSong(
+      nextSong,
+      true
     );
 
-    changeSong(index);
-
-  });
-
-});
+  }
+);
 
 
-/* ---------------------------------------------------------
-   CLOSE MENU WHEN CLICKING OUTSIDE
-   --------------------------------------------------------- */
+/* =========================================================
+   OPEN / CLOSE PLAYLIST
+   ========================================================= */
 
-document.addEventListener("click", (event) => {
+musicTrackButton.addEventListener(
+  "click",
+  (event) => {
 
-  if (
-    musicMenu &&
-    !musicMenu.contains(event.target) &&
-    !musicTrackButton.contains(event.target)
-  ) {
+    event.stopPropagation();
 
-    musicMenu.classList.remove("open");
+    musicMenu.classList.toggle(
+      "open"
+    );
 
   }
+);
 
-});
+
+/* =========================================================
+   SELECT SONG
+   ========================================================= */
+
+musicOptions.forEach(
+  (button) => {
+
+    button.addEventListener(
+      "click",
+      (event) => {
+
+        const index =
+          Number(
+            event.currentTarget
+              .dataset.song
+          );
+
+        changeSong(index);
+
+      }
+    );
+
+  }
+);
 
 
-/* ---------------------------------------------------------
+/* =========================================================
+   CLOSE PLAYLIST WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+document.addEventListener(
+  "click",
+  (event) => {
+
+    if (
+      !musicMenu.contains(event.target) &&
+      !musicTrackButton.contains(event.target)
+    ) {
+
+      musicMenu.classList.remove(
+        "open"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
    INITIAL SONG
-   --------------------------------------------------------- */
+   ========================================================= */
 
-loadSong(0, false);
+loadSong(0);
 
 updateMusicButton();
