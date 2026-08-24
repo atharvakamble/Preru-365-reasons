@@ -1142,3 +1142,604 @@ footer {
     transform: scale(1.4);
   }
 }
+/* =========================================================
+   3D MAGICAL ANIMAL WORLD
+   ========================================================= */
+
+.animal-world {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  perspective: 1200px;
+}
+
+/* Every creature gets depth */
+.animal {
+  position: absolute;
+  transform-style: preserve-3d;
+  will-change: transform;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTERFLIES
+   ========================================================= */
+
+.animal-butterfly {
+  width: 90px;
+  height: 70px;
+  filter:
+    drop-shadow(0 12px 14px rgba(0,0,0,.45))
+    drop-shadow(0 0 18px rgba(196,145,255,.45));
+  animation: butterflyFloat 8s ease-in-out infinite;
+}
+
+.butterfly-body {
+  position: absolute;
+  left: 43px;
+  top: 20px;
+  width: 10px;
+  height: 38px;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      90deg,
+      #20152f,
+      #8064a8,
+      #241832
+    );
+  box-shadow:
+    inset 2px 0 3px rgba(255,255,255,.35),
+    4px 5px 10px rgba(0,0,0,.45);
+  z-index: 3;
+}
+
+.wing {
+  position: absolute;
+  top: 5px;
+  width: 48px;
+  height: 58px;
+  border-radius: 75% 25% 65% 35%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #ffffff 0 5%,
+      transparent 6%
+    ),
+    linear-gradient(
+      135deg,
+      #f7d9ff,
+      #b875e9 45%,
+      #633ca1
+    );
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow:
+    inset 0 0 12px rgba(255,255,255,.4),
+    0 5px 15px rgba(87,37,130,.35);
+}
+
+.wing-left {
+  left: 0;
+  transform-origin: right center;
+  animation: wingLeft 0.8s ease-in-out infinite alternate;
+}
+
+.wing-right {
+  right: 0;
+  transform:
+    scaleX(-1);
+  transform-origin: left center;
+  animation: wingRight 0.8s ease-in-out infinite alternate;
+}
+
+.butterfly-1 {
+  left: 7%;
+  top: 14%;
+  transform: scale(1.35);
+  animation-delay: -1s;
+}
+
+.butterfly-2 {
+  right: 8%;
+  top: 42%;
+  transform: scale(.95);
+  animation-delay: -4s;
+}
+
+.butterfly-3 {
+  left: 58%;
+  bottom: 12%;
+  transform: scale(1.15);
+  animation-delay: -6s;
+}
+
+
+/* =========================================================
+   RABBITS
+   ========================================================= */
+
+.animal-rabbit {
+  width: 130px;
+  height: 150px;
+  filter:
+    drop-shadow(0 18px 18px rgba(0,0,0,.55))
+    drop-shadow(0 0 20px rgba(255,220,255,.2));
+  animation: rabbitHop 7s ease-in-out infinite;
+}
+
+.rabbit-head {
+  position: absolute;
+  width: 70px;
+  height: 65px;
+  left: 32px;
+  top: 35px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #fff,
+      #e8dce8 45%,
+      #9e8b9e
+    );
+  box-shadow:
+    inset -8px -10px 15px rgba(60,30,60,.25),
+    inset 5px 5px 10px rgba(255,255,255,.6);
+  z-index: 2;
+}
+
+.rabbit-ear {
+  position: absolute;
+  width: 28px;
+  height: 75px;
+  top: -5px;
+  border-radius: 70% 70% 35% 35%;
+  background:
+    linear-gradient(
+      90deg,
+      #a894a8,
+      #f8edf8,
+      #a894a8
+    );
+  box-shadow:
+    inset 5px 0 8px rgba(255,255,255,.5),
+    4px 7px 10px rgba(0,0,0,.25);
+}
+
+.ear-left {
+  left: 35px;
+  transform: rotate(-10deg);
+}
+
+.ear-right {
+  right: 35px;
+  transform: rotate(10deg);
+}
+
+.rabbit-body {
+  position: absolute;
+  left: 20px;
+  top: 85px;
+  width: 90px;
+  height: 62px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #fff,
+      #d9cbd9 55%,
+      #8f7c90
+    );
+  box-shadow:
+    inset -8px -8px 15px rgba(50,20,50,.25),
+    0 12px 18px rgba(0,0,0,.35);
+}
+
+.rabbit-1 {
+  left: 3%;
+  bottom: 17%;
+  transform: scale(1.25);
+  animation-delay: -2s;
+}
+
+.rabbit-2 {
+  right: 2%;
+  top: 18%;
+  transform: scale(.9);
+  animation-delay: -5s;
+}
+
+
+/* =========================================================
+   DEER
+   ========================================================= */
+
+.animal-deer {
+  width: 190px;
+  height: 170px;
+  filter:
+    drop-shadow(0 20px 20px rgba(0,0,0,.6))
+    drop-shadow(0 0 20px rgba(255,180,220,.15));
+  animation: deerWalk 12s ease-in-out infinite;
+}
+
+.deer-body {
+  position: absolute;
+  left: 35px;
+  top: 70px;
+  width: 125px;
+  height: 60px;
+  border-radius: 55% 45% 45% 50%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      #d9a875,
+      #8b5839 55%,
+      #4d3025
+    );
+  box-shadow:
+    inset -10px -8px 15px rgba(35,15,10,.4),
+    inset 8px 6px 12px rgba(255,220,170,.25);
+}
+
+.deer-neck {
+  position: absolute;
+  left: 115px;
+  top: 32px;
+  width: 40px;
+  height: 80px;
+  border-radius: 50%;
+  background:
+    linear-gradient(
+      90deg,
+      #70452f,
+      #c18a5a,
+      #71442f
+    );
+  transform: rotate(-15deg);
+  box-shadow:
+    inset 7px 0 10px rgba(255,220,170,.25);
+}
+
+.deer-head {
+  position: absolute;
+  left: 130px;
+  top: 12px;
+  width: 65px;
+  height: 50px;
+  border-radius: 55% 45% 45% 55%;
+  background:
+    linear-gradient(
+      135deg,
+      #d09a67,
+      #805033,
+      #4d3024
+    );
+  box-shadow:
+    inset -6px -6px 10px rgba(25,10,5,.35);
+  z-index: 3;
+}
+
+.deer-antler {
+  position: absolute;
+  top: -15px;
+  width: 8px;
+  height: 48px;
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      90deg,
+      #5b3825,
+      #c09062,
+      #5b3825
+    );
+  z-index: 4;
+}
+
+.antler-left {
+  left: 142px;
+  transform: rotate(-25deg);
+}
+
+.antler-right {
+  left: 168px;
+  transform: rotate(20deg);
+}
+
+.deer-leg {
+  position: absolute;
+  top: 116px;
+  width: 12px;
+  height: 55px;
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      #5a3727,
+      #a86e46,
+      #45291f
+    );
+  transform-origin: top;
+}
+
+.leg-1 {
+  left: 58px;
+  animation: legMove .8s ease-in-out infinite alternate;
+}
+
+.leg-2 {
+  left: 87px;
+  animation: legMove .8s ease-in-out -.3s infinite alternate;
+}
+
+.leg-3 {
+  left: 125px;
+  animation: legMove .8s ease-in-out -.5s infinite alternate;
+}
+
+.leg-4 {
+  left: 150px;
+  animation: legMove .8s ease-in-out -.1s infinite alternate;
+}
+
+.deer-1 {
+  left: 16%;
+  top: 32%;
+  transform: scale(1.15);
+  animation-delay: -3s;
+}
+
+.deer-2 {
+  right: 9%;
+  bottom: 5%;
+  transform: scale(.9) scaleX(-1);
+  animation-delay: -8s;
+}
+
+
+/* =========================================================
+   3D MOVEMENT
+   ========================================================= */
+
+@keyframes butterflyFloat {
+
+  0% {
+    margin-left: 0;
+    margin-top: 0;
+    transform:
+      translate3d(0,0,80px)
+      rotateY(0deg)
+      rotateZ(-4deg);
+  }
+
+  25% {
+    margin-left: 80px;
+    margin-top: -35px;
+    transform:
+      translate3d(0,0,180px)
+      rotateY(25deg)
+      rotateZ(5deg);
+  }
+
+  50% {
+    margin-left: 140px;
+    margin-top: 25px;
+    transform:
+      translate3d(0,0,40px)
+      rotateY(-20deg)
+      rotateZ(-5deg);
+  }
+
+  75% {
+    margin-left: 60px;
+    margin-top: 70px;
+    transform:
+      translate3d(0,0,220px)
+      rotateY(30deg)
+      rotateZ(6deg);
+  }
+
+  100% {
+    margin-left: 0;
+    margin-top: 0;
+    transform:
+      translate3d(0,0,80px)
+      rotateY(0deg)
+      rotateZ(-4deg);
+  }
+}
+
+
+@keyframes wingLeft {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(68deg);
+  }
+}
+
+@keyframes wingRight {
+  from {
+    transform:
+      scaleX(-1)
+      rotateY(0deg);
+  }
+
+  to {
+    transform:
+      scaleX(-1)
+      rotateY(68deg);
+  }
+}
+
+
+@keyframes rabbitHop {
+
+  0%, 100% {
+    margin-left: 0;
+    transform:
+      translate3d(0,0,30px)
+      rotateZ(0deg);
+  }
+
+  25% {
+    margin-left: 70px;
+    transform:
+      translate3d(0,-35px,150px)
+      rotateZ(-4deg);
+  }
+
+  50% {
+    margin-left: 130px;
+    transform:
+      translate3d(0,0,60px)
+      rotateZ(3deg);
+  }
+
+  75% {
+    margin-left: 50px;
+    transform:
+      translate3d(0,-25px,200px)
+      rotateZ(-2deg);
+  }
+}
+
+
+@keyframes deerWalk {
+
+  0%, 100% {
+    margin-left: 0;
+    transform:
+      translate3d(0,0,20px)
+      rotateY(0deg);
+  }
+
+  30% {
+    margin-left: 90px;
+    transform:
+      translate3d(0,-10px,130px)
+      rotateY(-8deg);
+  }
+
+  60% {
+    margin-left: 180px;
+    transform:
+      translate3d(0,0,50px)
+      rotateY(8deg);
+  }
+
+  85% {
+    margin-left: 80px;
+    transform:
+      translate3d(0,-5px,180px)
+      rotateY(-5deg);
+  }
+}
+
+
+@keyframes legMove {
+  from {
+    transform: rotate(-8deg);
+  }
+
+  to {
+    transform: rotate(8deg);
+  }
+}
+
+
+/* =========================================================
+   KEEP ANIMALS BEHIND THE CONTENT
+   ========================================================= */
+
+.animal-world {
+  z-index: 0;
+}
+
+main,
+header,
+section,
+.reason-field,
+.reason-note,
+button,
+.popup,
+.final-screen {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .animal-butterfly {
+    width: 75px;
+    height: 60px;
+  }
+
+  .animal-rabbit {
+    transform: scale(.82);
+  }
+
+  .animal-deer {
+    transform: scale(.72);
+  }
+
+  .butterfly-1 {
+    left: 1%;
+    top: 15%;
+  }
+
+  .butterfly-2 {
+    right: -5%;
+    top: 47%;
+  }
+
+  .butterfly-3 {
+    left: 50%;
+    bottom: 8%;
+  }
+
+  .rabbit-1 {
+    left: -7%;
+    bottom: 22%;
+  }
+
+  .rabbit-2 {
+    right: -10%;
+    top: 22%;
+  }
+
+  .deer-1 {
+    left: -15%;
+    top: 35%;
+  }
+
+  .deer-2 {
+    right: -20%;
+    bottom: 4%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .animal,
+  .wing,
+  .deer-leg {
+    animation: none !important;
+  }
+}
